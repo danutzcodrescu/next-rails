@@ -1,0 +1,56 @@
+{
+  "name": "next-rails",
+  "version": "0.0.1",
+  "description": "Nextjs boilerplate for CRUD operations using Typescript's decorators",
+  "main": "server/server.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danutzcodrescu/next-rails"
+  },
+  "scripts": {
+    "dev": "nodemon server/server.ts",
+    "build": "next build",
+    "start": "next start",
+    "lint": "tslint -p .",
+    "lint-fix": "tslint -p . --fix",
+    "style": "prettier --list-different --single-quote \"src/**/*.ts\"",
+    "style-fix": "prettier --write --single-quote \"src/**/*.ts\""
+  },
+  "keywords": [
+    "nextjs",
+    "typescript",
+    "decorators",
+    "crud"
+  ],
+  "author": "Danut Codrescu",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.3",
+    "next": "^7.0.1",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "typescript": "^3.1.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-decorators": "^7.1.2",
+    "@types/axios": "^0.14.0",
+    "@types/express": "^4.16.0",
+    "@types/next": "^7.0.0",
+    "@zeit/next-typescript": "^1.1.1",
+    "husky": "^1.1.2",
+    "nodemon": "^1.18.4",
+    "prettier": "^1.14.3",
+    "reflect-metadata": "^0.1.12",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run lint-fix && yarn run style-fix"
+    }
+  }
+}
