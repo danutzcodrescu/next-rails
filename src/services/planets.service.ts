@@ -13,17 +13,24 @@ export interface PlanetJSON {
   rotation_period: string;
   surface_water: string;
   terrain: string;
+  url: string;
 }
 
 export class PlanetsService {
-  static getPlanets() {
-    return axios
-      .get('https://swapi.co/api/planets')
-      .then<Planet[]>(resp => resp.data.results.map(PlanetsService.toPlanet));
+  static async getPlanets() {
+    const resp = await axios.get('https://swapi.co/api/planets');
+    return resp.data.results.map(PlanetsService.toPlanet);
+  }
+
+  static async getPlanet(id: string) {
+    const resp = await axios.get(`https://swapi.co/api/planets/${id}`);
+    return PlanetsService.toPlanet(resp.data);
   }
 
   static toPlanet(planet: PlanetJSON) {
+    const regex = new RegExp(/planets\/([0-9]{1,})/);
     return new Planet(
+      planet.url.match(regex)![1],
       planet.name,
       planet.diameter,
       planet.rotation_period,

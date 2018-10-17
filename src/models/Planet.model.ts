@@ -1,27 +1,38 @@
 import { MetaModel } from './Meta.model';
 
 export class Planet {
+  private _id: string;
+
   @MetaModel.labelKey('Name')
   private _name: string;
+
   @MetaModel.labelKey('Diameter')
   private _diameter: string;
+
   @MetaModel.labelKey('Rotation period')
   private _rotation_period: string;
+
   @MetaModel.labelKey('Orbital period')
   private _orbital_period: string;
+
   @MetaModel.labelKey('Gravity')
   private _gravity: string;
+
   @MetaModel.labelKey('Population')
   private _population: string;
+
   @MetaModel.labelKey('Climate')
   private _climate: string;
+
   @MetaModel.labelKey('Terrain')
   private _terrain: string;
+
   @MetaModel.labelKey('Surface water')
   private _surface_water: string;
 
   [prop: string]: any;
   constructor(
+    id: string,
     name: string,
     diameter: string,
     rotation_period: string,
@@ -32,6 +43,7 @@ export class Planet {
     terrain: string,
     surface_water: string
   ) {
+    this._id = id;
     this._name = name;
     this._diameter = diameter;
     this._rotation_period = rotation_period;
@@ -41,6 +53,10 @@ export class Planet {
     this._climate = climate;
     this._terrain = terrain;
     this._surface_water = surface_water;
+  }
+
+  get id() {
+    return this._id;
   }
 
   get name() {

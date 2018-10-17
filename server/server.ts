@@ -14,12 +14,27 @@ app
       app.render(req, res, '/test');
     });
 
+    server.get('/planets', (req, res) => {
+      app.render(req, res, '/planets');
+    });
+
+    server.get('/planets/:id', (req, res) => {
+      app.render(
+        req,
+        res,
+        '/planet',
+        Object.assign({ id: req.params.id }, req.query)
+      );
+    });
+
     server.get('*', (req, res) => {
       return handle(req, res);
     });
 
     server.listen(3000, (err: any) => {
-      if (err) { throw err; }
+      if (err) {
+        throw err;
+      }
       console.log('> Ready on http://localhost:3000');
     });
   })

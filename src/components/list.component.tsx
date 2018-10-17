@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { MetaModel } from 'models/Meta.model';
+import Link from 'next/link';
 
 interface Props {
   properties: string[];
@@ -17,6 +18,7 @@ export class ListComponent extends React.Component<Props> {
             {properties.map(prop => (
               <td key={prop}>{MetaModel.getLabelKey(model.prototype, prop)}</td>
             ))}
+            <td>Actions</td>
           </tr>
         </thead>
         <tbody>
@@ -25,6 +27,17 @@ export class ListComponent extends React.Component<Props> {
               {properties.map(prop => (
                 <td key={`${object.id}-${prop}`}>{object[prop]}</td>
               ))}
+              <td>
+                <Link
+                  href={{
+                    pathname: `/${object.constructor.name.toLowerCase()}`,
+                    query: { id: object.id }
+                  }}
+                  as={`/${object.constructor.name.toLowerCase()}s/${object.id}`}
+                >
+                  <a>View</a>
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>
