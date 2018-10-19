@@ -14,15 +14,20 @@ app
       app.render(req, res, '/test');
     });
 
-    server.get('/planets', (req, res) => {
-      app.render(req, res, '/planets');
-    });
-
     server.get('/planets/:id', (req, res) => {
       app.render(
         req,
         res,
         '/planet',
+        Object.assign({ id: req.params.id }, req.query)
+      );
+    });
+
+    server.get('/posts/:id', (req, res) => {
+      app.render(
+        req,
+        res,
+        '/post',
         Object.assign({ id: req.params.id }, req.query)
       );
     });

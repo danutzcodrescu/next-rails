@@ -1,20 +1,21 @@
 import * as React from 'react';
 import { MetaModel } from 'models/Meta.model';
-import { object } from 'prop-types';
 
 interface Props {
   properties: string[];
   object: any;
+  model: any;
 }
 
 export class ViewComponent extends React.Component<Props> {
   render() {
-    const { object } = this.props;
+    const { object, model } = this.props;
+    console.log(typeof object);
     return this.props.properties.map(prop => (
       <div className='container' key={prop}>
         <div className='row'>
           <div className='col col-md-1'>
-            {MetaModel.getLabelKey(object, prop)}:
+            {MetaModel.getLabelKey(model.prototype, prop)}:
           </div>
           <div className='col col-md-9'>{object[prop]}</div>
         </div>

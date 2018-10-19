@@ -11,11 +11,11 @@ export default class Test extends React.Component<Props> {
   }
   render() {
     return (
-      <div>
+      <>
         {this.props.todos.map(todo => (
           <p key={todo.id}>{todo.title}</p>
         ))}
-      </div>
+      </>
     );
   }
 }

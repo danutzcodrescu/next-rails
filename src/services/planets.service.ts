@@ -17,13 +17,22 @@ export interface PlanetJSON {
 }
 
 export class PlanetsService {
-  static async getPlanets() {
+  static async getPlanets(ssr: boolean = false) {
     const resp = await axios.get('https://swapi.co/api/planets');
+    if (ssr) {
+      return resp.data.results.map((result: any) => {
+        const regex = new RegExp(/planets\/([0-9]{1,})/);
+        return { ...result, id: result.url.match(regex)![1] };
+      });
+    }
     return resp.data.results.map(PlanetsService.toPlanet);
   }
 
-  static async getPlanet(id: string) {
+  static async getPlanet(id: string, ssr: boolean = false) {
     const resp = await axios.get(`https://swapi.co/api/planets/${id}`);
+    if (ssr) {
+      return resp.data;
+    }
     return PlanetsService.toPlanet(resp.data);
   }
 
