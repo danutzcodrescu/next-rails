@@ -46,10 +46,10 @@ export class EditComponent extends React.Component<Props> {
     const { object, model } = this.props;
     return (
       <form onSubmit={this.submit}>
-        <button type='reset' className='btn btn-secondary'>
+        <button type="reset" className="btn btn-secondary">
           Discard
         </button>
-        <button type='submit' className='btn btn-primary'>
+        <button type="submit" className="btn btn-primary">
           Save
         </button>
         {this.props.properties.map(prop => (

@@ -34,7 +34,7 @@ export class InputComponent extends React.Component<Props> {
       case 'textarea':
         return (
           <textarea
-            className='form-control'
+            className="form-control"
             id={prop}
             name={prop}
             defaultValue={defaultValue}
@@ -44,7 +44,7 @@ export class InputComponent extends React.Component<Props> {
       case 'select':
         return (
           <select
-            className='form-control'
+            className="form-control"
             id={prop}
             name={prop}
             defaultValue={defaultValue}
@@ -61,7 +61,7 @@ export class InputComponent extends React.Component<Props> {
         return (
           <input
             type={type}
-            className='form-control'
+            className="form-control"
             id={prop}
             name={prop}
             defaultValue={defaultValue}
@@ -74,11 +74,11 @@ export class InputComponent extends React.Component<Props> {
   render() {
     const { label, prop, defaultValue, type } = this.props;
     return (
-      <div className='form-group row'>
-        <label htmlFor={prop} className='col-md-2 col-form-label'>
+      <div className="form-group row">
+        <label htmlFor={prop} className="col-md-2 col-form-label">
           {label}:
         </label>
-        <div className='col-md-10'> {this.renderInput()}</div>
+        <div className="col-md-10"> {this.renderInput()}</div>
       </div>
     );
   }
