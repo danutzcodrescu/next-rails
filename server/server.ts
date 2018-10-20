@@ -41,6 +41,24 @@ app
       );
     });
 
+    server.get('/posts/:id/edit', (req, res) => {
+      app.render(
+        req,
+        res,
+        '/post.edit',
+        Object.assign({ id: req.params.id }, req.query)
+      );
+    });
+
+    server.get('/posts/:id', (req, res) => {
+      app.render(
+        req,
+        res,
+        '/post',
+        Object.assign({ id: req.params.id }, req.query)
+      );
+    });
+
     server.get('*', (req, res) => {
       return handle(req, res);
     });

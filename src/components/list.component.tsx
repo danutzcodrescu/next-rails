@@ -1,9 +1,17 @@
 import * as React from 'react';
 import { MetaModel } from 'models/Meta.model';
 import Link from 'next/link';
+import _ from 'lodash';
+
+type ListProperty =
+  | string
+  | {
+      property: string;
+      value: (obj: any) => any;
+    };
 
 interface Props {
-  properties: string[];
+  properties: ListProperty[];
   objects: any[];
   model: any;
 }
@@ -16,7 +24,12 @@ export class ListComponent extends React.Component<Props> {
         <thead>
           <tr>
             {properties.map(prop => (
-              <td key={prop}>{MetaModel.getLabelKey(model.prototype, prop)}</td>
+              <td key={_.isString(prop) ? prop : prop.property}>
+                {MetaModel.getLabelKey(
+                  model.prototype,
+                  _.isString(prop) ? prop : prop.property
+                )}
+              </td>
             ))}
             <td>Actions</td>
           </tr>
@@ -25,7 +38,9 @@ export class ListComponent extends React.Component<Props> {
           {objects.map(object => (
             <tr key={object.id}>
               {properties.map(prop => (
-                <td key={`${object.id}-${prop}`}>{object[prop]}</td>
+                <td key={`${object.id}-${prop}`}>
+                  {_.isString(prop) ? object[prop] : prop.value(object)}
+                </td>
               ))}
               <td>
                 <Link
