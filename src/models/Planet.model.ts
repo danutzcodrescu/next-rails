@@ -104,9 +104,9 @@ export class Planet {
   get population() {
     return this._population;
   }
-        set population(population: string) {
-          this._population = population;
-        }
+  set population(population: string) {
+    this._population = population;
+  }
 
   get climate() {
     return this._climate;
