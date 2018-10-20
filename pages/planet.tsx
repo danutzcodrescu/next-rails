@@ -5,6 +5,7 @@ import { withRouter, WithRouterProps } from 'next/router';
 import ViewComponent from 'components/view.component';
 import * as _ from 'lodash';
 import { NextContext } from 'next';
+import Link from 'next/link';
 interface Props extends WithRouterProps {
   planet: Planet;
 }
@@ -18,11 +19,30 @@ export class PlanetPage extends React.Component<Props> {
     return { planet };
   }
   render() {
+    let { planet } = this.props;
+    if (!(planet instanceof Planet)) {
+      planet = PlanetsService.toPlanet(planet);
+    }
     return (
       <>
-        <h1>View</h1>
+        <div className='row'>
+          <div className='col col-md-8' />
+          <div className='col col-md-4 text-right'>
+            <Link
+              href={{
+                pathname: `/planet.edit`,
+                query: { id: planet.id }
+              }}
+              as={`/planets/${planet.id}/edit`}
+            >
+              <button className='btn btn-primary'>Edit</button>
+            </Link>
+          </div>
+        </div>
+        <h1>View {planet.name}</h1>
+
         <ViewComponent
-          object={this.props.planet}
+          object={planet}
           model={Planet}
           properties={['name', 'diameter', 'population', 'terrain']}
         />

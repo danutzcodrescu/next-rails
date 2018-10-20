@@ -30,12 +30,22 @@ export class ListComponent extends React.Component<Props> {
               <td>
                 <Link
                   href={{
-                    pathname: `/${object.constructor.name.toLowerCase()}`,
+                    pathname: `/${model.name.toLowerCase()}`,
                     query: { id: object.id }
                   }}
-                  as={`/${object.constructor.name.toLowerCase()}s/${object.id}`}
+                  as={`/${model.name.toLowerCase()}s/${object.id}`}
                 >
                   <a>View</a>
+                </Link>{' '}
+                |{' '}
+                <Link
+                  href={{
+                    pathname: `/${model.name.toLowerCase()}.edit`,
+                    query: { id: object.id }
+                  }}
+                  as={`/${model.name.toLowerCase()}s/${object.id}/edit`}
+                >
+                  <a>Edit</a>
                 </Link>
               </td>
             </tr>

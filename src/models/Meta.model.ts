@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 
 const labelKeyMetadataKey = Symbol('label-name');
+const inputTypeMetadataKey = Symbol('inputType');
 
 export abstract class MetaModel {
   static getProperties(target: any) {
@@ -16,6 +17,18 @@ export abstract class MetaModel {
   static getLabelKey(prototype: any, propertyKey: string) {
     return Reflect.getMetadata(
       labelKeyMetadataKey,
+      prototype,
+      '_' + propertyKey
+    );
+  }
+
+  static inputType(value: string) {
+    return Reflect.metadata(inputTypeMetadataKey, value);
+  }
+
+  static getInputType(prototype: any, propertyKey: string) {
+    return Reflect.getMetadata(
+      inputTypeMetadataKey,
       prototype,
       '_' + propertyKey
     );

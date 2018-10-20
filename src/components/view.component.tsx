@@ -10,7 +10,6 @@ interface Props {
 export class ViewComponent extends React.Component<Props> {
   render() {
     const { object, model } = this.props;
-    console.log(typeof object);
     return this.props.properties.map(prop => (
       <div className='container' key={prop}>
         <div className='row'>

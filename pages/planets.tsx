@@ -14,6 +14,10 @@ class PlanetsList extends React.Component<Props> {
     return { planets };
   }
   render() {
+    let { planets } = this.props;
+    if (!(planets[0] instanceof Planet)) {
+      planets = (planets as any).map(PlanetsService.toPlanet);
+    }
     return (
       <div>
         <h1>Planets</h1>
