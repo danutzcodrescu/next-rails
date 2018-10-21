@@ -2,11 +2,15 @@ import axios from 'axios';
 import { Post } from 'models/Post.model';
 import { UsersService, UserJSON } from './users.service';
 
-export interface PostJSON {
+export interface PostJSONUpdate {
   id: string;
   title: string;
   body: string;
   userId: number;
+  [key: string]: any;
+}
+
+export interface PostJSON extends PostJSONUpdate {
   user: UserJSON;
 }
 
@@ -27,6 +31,10 @@ export class PostsService {
       return resp.data;
     }
     return PostsService.toPost(resp.data);
+  }
+
+  static async updatePost(post: Post) {
+    await axios.put(`${PostsService.url}/${post.id}`, post.flatten());
   }
 
   static toPost(post: PostJSON) {

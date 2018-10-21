@@ -1,5 +1,6 @@
 import { MetaModel } from './Meta.model';
 import { User } from './User.model';
+import { PostJSONUpdate } from 'services/posts.service';
 
 export class Post {
   private _id: string;
@@ -45,5 +46,17 @@ export class Post {
   }
   set user(user: User) {
     this._user = user;
+  }
+
+  flatten() {
+    const obj: Partial<PostJSONUpdate> = {};
+    Object.getOwnPropertyNames(this).forEach(prop => {
+      if (prop === '_user') {
+        obj.userId = parseInt(this._user.id, 10);
+      } else {
+        obj[prop.slice(1)] = this[prop];
+      }
+    });
+    return obj;
   }
 }

@@ -48,6 +48,7 @@ export class PostsEdit extends React.Component<Props> {
           specificValues={
             new Map([['user', { values: users, identifier: 'id' }]])
           }
+          updateCallback={PostsService.updatePost}
         />
       </>
     );

@@ -13,8 +13,8 @@
     "start": "next start",
     "lint": "tslint -p .",
     "lint-fix": "tslint -p . --fix",
-    "style": "prettier --list-different \"src/**/*.{ts,tsx}*\"",
-    "style-fix": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "style": "prettier --list-different --single-quote \"**/*.+(ts|tsx)\"",
+    "style-fix": "prettier --write --single-quote \"**/*.+(ts|tsx)\"",
     "fake-server": "json-server --watch json-server/db.json --port 4200"
   },
   "keywords": [
@@ -46,7 +46,6 @@
     "classnames": "2.2.6",
     "husky": "1.1.2",
     "json-server": "0.14.0",
-    "lint-staged": "7.3.0",
     "node-sass": "4.9.4",
     "nodemon": "1.18.4",
     "prettier": "1.14.3",
@@ -61,14 +60,5 @@
     "hooks": {
       "pre-commit": "yarn run lint && yarn run style"
     }
-  },
-  "lint-staged": {
-    "*.+(ts|tsx)": [
-      "tslint -p . --fix"
-    ],
-    "src/**/*.+(ts|tsx)": [
-      "prettier --write",
-      "git add"
-    ]
   }
 }

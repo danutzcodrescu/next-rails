@@ -19,6 +19,7 @@ interface Props {
   model: any;
   properties: EditProperty[];
   specificValues?: Map<string, { values: any[]; identifier: string }>;
+  updateCallback: (obj: any) => void;
 }
 
 export class EditComponent extends React.Component<Props> {
@@ -37,10 +38,10 @@ export class EditComponent extends React.Component<Props> {
     } else {
       this._object[name] = value;
     }
-    console.log(this._object);
   };
   submit = (e: any) => {
     e.preventDefault();
+    this.props.updateCallback(this._object);
   };
 
   render() {
