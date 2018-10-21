@@ -4,13 +4,13 @@ import { Planet } from '../models/Planet.model';
 export interface PlanetJSON {
   climate: string;
   created: string;
-  diameter: string;
+  diameter: number;
   edited: string;
   gravity: string;
   name: string;
-  orbital_period: string;
-  population: string;
-  rotation_period: string;
+  orbital_period: number;
+  population: number;
+  rotation_period: number;
   surface_water: string;
   terrain: string;
   url: string;

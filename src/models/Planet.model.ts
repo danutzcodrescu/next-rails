@@ -4,40 +4,40 @@ export class Planet {
   private _id: string;
 
   @MetaModel.labelKey('Name')
-  @MetaModel.inputType('text')
+  @MetaModel.inputData({ type: 'text', pattern: 'Alderaan|Naboo' })
   private _name: string;
 
   @MetaModel.labelKey('Diameter')
-  @MetaModel.inputType('number')
+  @MetaModel.inputData({ type: 'number' })
   private _diameter: number;
 
   @MetaModel.labelKey('Rotation period')
-  @MetaModel.inputType('number')
+  @MetaModel.inputData({ type: 'number' })
   private _rotation_period: number;
 
   @MetaModel.labelKey('Orbital period')
-  @MetaModel.inputType('number')
+  @MetaModel.inputData({ type: 'number' })
   private _orbital_period: number;
 
   @MetaModel.labelKey('Gravity')
-  @MetaModel.inputType('text')
+  @MetaModel.inputData({ type: 'text' })
   private _gravity: string;
 
   @MetaModel.labelKey('Population')
-  @MetaModel.inputType('number')
+  @MetaModel.inputData({ type: 'number' })
   private _population: number;
 
   @MetaModel.labelKey('Climate')
-  @MetaModel.inputType('text')
+  @MetaModel.inputData({ type: 'text' })
   private _climate: string;
 
   @MetaModel.labelKey('Terrain')
-  @MetaModel.inputType('text')
+  @MetaModel.inputData({ type: 'text' })
   private _terrain: string;
 
   @MetaModel.labelKey('Surface water')
-  @MetaModel.inputType('number')
-  private _surface_water: number;
+  @MetaModel.inputData({ type: 'number' })
+  private _surface_water: string;
 
   [prop: string]: any;
   constructor(
@@ -50,7 +50,7 @@ export class Planet {
     population: number,
     climate: string,
     terrain: string,
-    surface_water: number
+    surface_water: string
   ) {
     this._id = id;
     this._name = name;
@@ -88,6 +88,7 @@ export class Planet {
   set rotation_period(rotation_period: number) {
     this._rotation_period = rotation_period;
   }
+
   get orbital_period() {
     return this._orbital_period;
   }
@@ -101,10 +102,11 @@ export class Planet {
   set gravity(gravity: string) {
     this._gravity = gravity;
   }
+
   get population() {
     return this._population;
   }
-  set population(population: string) {
+  set population(population: number) {
     this._population = population;
   }
 

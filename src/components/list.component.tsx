@@ -20,7 +20,7 @@ export class ListComponent extends React.Component<Props> {
   render() {
     const { model, objects, properties } = this.props;
     return (
-      <table className="table">
+      <table className='table'>
         <thead>
           <tr>
             {properties.map(prop => (

@@ -1,7 +1,25 @@
 import 'reflect-metadata';
 
 const labelKeyMetadataKey = Symbol('label-name');
-const inputTypeMetadataKey = Symbol('inputType');
+const inputTypeMetadataKey = Symbol('inputData');
+
+export interface InputData {
+  type:
+    | 'text'
+    | 'number'
+    | 'date'
+    | 'password'
+    | 'email'
+    | 'textarea'
+    | 'select'
+    | 'radio';
+  required?: boolean;
+  pattern?: string | undefined;
+  min?: number | string | undefined;
+  max?: number | string | undefined;
+  minLength?: number;
+  maxLength?: number;
+}
 
 export abstract class MetaModel {
   static getProperties(target: any) {
@@ -22,11 +40,11 @@ export abstract class MetaModel {
     );
   }
 
-  static inputType(value: string) {
+  static inputData(value: InputData) {
     return Reflect.metadata(inputTypeMetadataKey, value);
   }
 
-  static getInputType(prototype: any, propertyKey: string) {
+  static getInputData(prototype: any, propertyKey: string) {
     return Reflect.getMetadata(
       inputTypeMetadataKey,
       prototype,

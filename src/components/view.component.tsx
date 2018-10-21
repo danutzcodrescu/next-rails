@@ -19,16 +19,16 @@ export class ViewComponent extends React.Component<Props> {
   render() {
     const { object, model } = this.props;
     return this.props.properties.map(prop => (
-      <div className="container" key={_.isString(prop) ? prop : prop.property}>
-        <div className="row">
-          <div className="col col-md-1">
+      <div className='container' key={_.isString(prop) ? prop : prop.property}>
+        <div className='row'>
+          <div className='col col-md-1'>
             {MetaModel.getLabelKey(
               model.prototype,
               _.isString(prop) ? prop : prop.property
             )}
             :
           </div>
-          <div className="col col-md-9">
+          <div className='col col-md-9'>
             {_.isString(prop) ? object[prop] : prop.value(object)}
           </div>
         </div>

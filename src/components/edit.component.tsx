@@ -29,7 +29,7 @@ export class EditComponent extends React.Component<Props> {
       !_.isNil(this.props.specificValues) &&
       this.props.specificValues.has(name)
     ) {
-      const data = this.props.specificValues.get(name);
+      const data = this.props.specificValues.get(name)!;
       this._object[name] = data.values.find(
         // tslint:disable-next-line
         val => val[data.identifier] == value
@@ -37,6 +37,7 @@ export class EditComponent extends React.Component<Props> {
     } else {
       this._object[name] = value;
     }
+    console.log(this._object);
   };
   submit = (e: any) => {
     e.preventDefault();
@@ -46,10 +47,10 @@ export class EditComponent extends React.Component<Props> {
     const { object, model } = this.props;
     return (
       <form onSubmit={this.submit}>
-        <button type="reset" className="btn btn-secondary">
+        <button type='reset' className='btn btn-secondary'>
           Discard
         </button>
-        <button type="submit" className="btn btn-primary">
+        <button type='submit' className='btn btn-primary'>
           Save
         </button>
         {this.props.properties.map(prop => (
@@ -60,7 +61,7 @@ export class EditComponent extends React.Component<Props> {
               model.prototype,
               _.isString(prop) ? prop : prop.property
             )}
-            type={MetaModel.getInputType(
+            data={MetaModel.getInputData(
               model.prototype,
               _.isString(prop) ? prop : prop.property
             )}

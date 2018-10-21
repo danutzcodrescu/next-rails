@@ -5,15 +5,15 @@ export class Post {
   private _id: string;
 
   @MetaModel.labelKey('Title')
-  @MetaModel.inputType('text')
+  @MetaModel.inputData({ type: 'text', required: true })
   private _title: string;
 
   @MetaModel.labelKey('Body')
-  @MetaModel.inputType('textarea')
+  @MetaModel.inputData({ type: 'textarea', minLength: 50, maxLength: 200 })
   private _body: string;
 
   @MetaModel.labelKey('User')
-  @MetaModel.inputType('select')
+  @MetaModel.inputData({ type: 'select' })
   private _user: User;
 
   [prop: string]: any;
