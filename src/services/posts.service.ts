@@ -34,7 +34,19 @@ export class PostsService {
   }
 
   static async updatePost(post: Post) {
-    await axios.put(`${PostsService.url}/${post.id}`, post.flatten());
+    const { data } = await axios.put<PostJSONUpdate>(
+      `${PostsService.url}/${post.id}`,
+      post.flatten()
+    );
+    return data;
+  }
+
+  static async newPost(post: Post) {
+    const { data } = await axios.post<PostJSONUpdate>(
+      `${PostsService.url}`,
+      post.flatten()
+    );
+    return data;
   }
 
   static toPost(post: PostJSON) {

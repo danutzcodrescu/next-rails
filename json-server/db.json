@@ -2,7 +2,7 @@
   "posts": [
     {
       "id": 1,
-      "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderits",
+      "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
       "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
       "userId": 2
     },
@@ -41,6 +41,30 @@
       "id": 7,
       "title": "Vision-oriented Heights",
       "body": "dolore-dolorem-dolor"
+    },
+    {
+      "id": 8,
+      "title": "test",
+      "body": "test21212121",
+      "userId": 2
+    },
+    {
+      "id": 9,
+      "title": "xzxzz",
+      "body": "sasasa",
+      "userId": 3
+    },
+    {
+      "id": 10,
+      "title": "saa",
+      "body": "xzxz",
+      "userId": 3
+    },
+    {
+      "id": 11,
+      "title": "added error boundries and exceptions",
+      "body": "sasaxzxzxz",
+      "userId": 3
     }
   ],
   "users": [
