@@ -1,11 +1,11 @@
 import * as React from 'react';
-import ListComponent from 'components/list.component';
+import ListComponent from 'components/templates/list/list.component';
 import { Post } from 'models/Post.model';
 import { PostsService, PostJSONUpdate, PostJSON } from 'services/posts.service';
 import { NextContext } from 'next';
 import { RouterParams } from 'src/utilities/types';
 import _ from 'lodash';
-import EditComponent from 'components/edit.component';
+import EditComponent from 'components/templates/edit/edit.component';
 import { User } from 'models/User.model';
 import { UsersService } from 'services/users.service';
 

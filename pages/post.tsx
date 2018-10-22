@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { withRouter, WithRouterProps } from 'next/router';
-import ViewComponent from 'components/view.component';
+import ViewComponent from 'components/templates/view/view.component';
 import { Post } from 'models/Post.model';
 import { PostsService } from 'services/posts.service';
 import { NextContext } from 'next';

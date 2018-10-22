@@ -4,7 +4,7 @@ import { Post } from 'models/Post.model';
 import { RouterParams } from 'src/utilities/types';
 import { PostsService } from 'services/posts.service';
 import _ from 'lodash';
-import EditComponent from 'components/edit.component';
+import EditComponent from 'components/templates/edit/edit.component';
 import { User } from 'models/User.model';
 import { UsersService } from 'services/users.service';
 

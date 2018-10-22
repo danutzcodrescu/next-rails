@@ -4,7 +4,7 @@ import { NextContext } from 'next';
 import { PlanetsService } from 'services/planets.service';
 import { RouterParams } from 'src/utilities/types';
 import * as _ from 'lodash';
-import { EditComponent } from 'components/edit.component';
+import { EditComponent } from 'components/templates/edit/edit.component';
 
 interface Props {
   planet: Planet;
@@ -31,6 +31,7 @@ export class EditPlanet extends React.Component<Props> {
           model={Planet}
           object={planet}
           properties={['name', 'diameter', 'population', 'terrain']}
+          updateCallback={() => null}
         />
       </>
     );

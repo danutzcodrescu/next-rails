@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { MetaModel } from 'models/Meta.model';
-import InputComponent from './input.component';
+import InputComponent from '../input/input.component';
 import _ from 'lodash';
 
 type EditProperty =

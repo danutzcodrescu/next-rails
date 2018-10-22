@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Planet } from 'models/Planet.model';
 import { PlanetsService } from 'services/planets.service';
 import { withRouter, WithRouterProps } from 'next/router';
-import ViewComponent from 'components/view.component';
+import ViewComponent from 'components/templates/view/view.component';
 import * as _ from 'lodash';
 import { NextContext } from 'next';
 import Link from 'next/link';

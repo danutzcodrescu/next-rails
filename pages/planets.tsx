@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PlanetsService } from 'services/planets.service';
 import { Planet } from 'models/Planet.model';
-import ListComponent from 'components/list.component';
+import ListComponent from 'components/templates/list/list.component';
 import _ from 'lodash';
 import { NextContext } from 'next';
 interface Props {
