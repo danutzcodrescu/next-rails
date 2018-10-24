@@ -42,7 +42,13 @@ export class PostsEdit extends React.Component<Props> {
             {
               property: 'user',
               value: (post: Post) => post.user.id,
-              options: users.map(user => ({ prop: user.name, value: user.id }))
+              options: users.map(user => ({ prop: user.name, value: user.id })),
+              type: 'defined'
+            },
+            {
+              label: 'calculated',
+              type: 'calculated',
+              value: (post: Post) => post.title + ' guuust ' + post.user.name
             }
           ]}
           specificValues={

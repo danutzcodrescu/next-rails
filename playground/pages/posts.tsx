@@ -81,7 +81,8 @@ class PostsList extends React.Component<Props, State> {
                 options: users.map(user => ({
                   prop: user.name,
                   value: user.id
-                }))
+                })),
+                type: 'defined'
               }
             ]}
             specificValues={

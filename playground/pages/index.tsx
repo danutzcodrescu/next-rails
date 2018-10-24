@@ -16,7 +16,7 @@ const Index = () => (
         </Link>
       </li>
       <li>
-        <Link href={'/posts'}>
+        <Link href='/posts'>
           <a>Posts</a>
         </Link>
       </li>
