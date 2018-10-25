@@ -7,6 +7,7 @@ import _ from 'lodash';
 import EditComponent from 'components/templates/edit/edit.component';
 import { User } from 'models/User.model';
 import { UsersService } from 'services/users.service';
+import { MapToClass } from 'components/utilities/mapToClass.component';
 
 interface Props {
   post: Post;
@@ -23,40 +24,44 @@ export class PostsEdit extends React.Component<Props> {
   }
 
   render() {
-    let { post, users } = this.props;
-    if (!(post instanceof Post)) {
-      post = PostsService.toPost(post);
-    }
-    if (!(users[0] instanceof User)) {
-      users = users.map(UsersService.toUser);
-    }
     return (
-      <>
-        <h1>Edit {post.name}</h1>
-        <EditComponent
-          model={Post}
-          object={post}
-          properties={[
-            'title',
-            'body',
-            {
-              property: 'user',
-              value: (post: Post) => post.user.id,
-              options: users.map(user => ({ prop: user.name, value: user.id })),
-              type: 'defined'
-            },
-            {
-              label: 'calculated',
-              type: 'calculated',
-              value: (post: Post) => post.title + ' guuust ' + post.user.name
-            }
-          ]}
-          specificValues={
-            new Map([['user', { values: users, identifier: 'id' }]])
-          }
-          updateCallback={PostsService.updatePost}
-        />
-      </>
+      <MapToClass
+        models={[Post, User]}
+        services={[PostsService.toPost, UsersService.toUser]}
+        objects={[[this.props.post], this.props.users]}
+        render={([posts, users]) => (
+          <>
+            <h1>Edit {posts[0].name}</h1>
+            <EditComponent
+              model={Post}
+              object={posts[0]}
+              properties={[
+                'title',
+                'body',
+                {
+                  property: 'user',
+                  value: (post: Post) => post.user.id,
+                  options: users.map((user: User) => ({
+                    prop: user.name,
+                    value: user.id
+                  })),
+                  type: 'defined'
+                },
+                {
+                  label: 'calculated',
+                  type: 'calculated',
+                  value: (post: Post) =>
+                    post.title + ' guuust ' + post.user.name
+                }
+              ]}
+              specificValues={
+                new Map([['user', { values: users, identifier: 'id' }]])
+              }
+              updateCallback={PostsService.updatePost}
+            />
+          </>
+        )}
+      />
     );
   }
 }

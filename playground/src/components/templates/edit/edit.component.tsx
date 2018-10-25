@@ -77,11 +77,17 @@ export class EditComponent extends React.Component<Props, State> {
     return true;
   }
 
+  reset = () => {
+    this.setState({
+      object: this.props.object
+    });
+  };
+
   render() {
     const { object, model } = this.props;
     return (
       <form onSubmit={this.submit}>
-        <button type='reset' className='btn btn-secondary'>
+        <button type='reset' className='btn btn-secondary' onClick={this.reset}>
           Discard
         </button>
         <button type='submit' className='btn btn-primary'>
